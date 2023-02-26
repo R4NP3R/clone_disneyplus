@@ -1,5 +1,65 @@
-$cor: rgb(40, 231, 136);
+@use 'variaveis';
+@use 'hero';
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Regular.woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: $cor;
+    background-color: variaveis.$corDeFundo;
+    font-family: Avenir, sans-serif;
+}
+
+@mixin text($Fontsize: 16px) {
+    font-size: $Fontsize;
+    line-height: $Fontsize + 10px;
+    color: variaveis.$cortextoPrincipal;
+}
+
+@mixin tittle($Fontsize:40px){
+    @include text($Fontsize);
+    color: variaveis.$cortextoSecundaria;
+}
+
+.text--big {
+    @include text(18px);
+}
+
+.text {
+    @include text;
+}
+
+.text--small {
+    @include text(12px);
+}
+.link-text {
+    @include text(18px);
+    color: variaveis.$cortextoSecundaria;
+    text-decoration: underline;
+}
+
+.tittle--big {
+    @include tittle(44px);
+}
+
+.tittle{
+    @include tittle;
+}
+
+.tittle--small{
+    @include tittle(28px);
 }
