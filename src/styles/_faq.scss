@@ -17,6 +17,9 @@
                 display: block;
                 cursor: pointer;
                 position: relative;
+                @media (max-width:768px) {
+                    font-size: 15px;
+                }
 
                 &::after {
                     content: '+';
@@ -35,6 +38,22 @@
                 overflow: hidden;
                 padding: 0 24px 0 24px;
                 transition: height, .5s ease;
+
+                li{
+                    list-style: inside;
+                    margin-bottom: 16px;
+                    margin-right: 14px;
+
+                    &:first-child {
+                        margin-bottom: 16px;
+                        margin-top: 16px;
+                    }
+                }
+
+                @media (max-width:768px) {
+                    font-size: 15px;
+                    
+                }
             }
 
             &--is-open {
