@@ -2,6 +2,10 @@
 @use 'hero';
 @use 'shows';
 @use 'plans';
+@use 'available_devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
 
 @font-face {
     font-family: Avenir;
@@ -20,6 +24,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Avenir, sans-serif;
+    list-style: none;
 }
 
 body {
@@ -39,14 +44,25 @@ body {
 
 .text--big {
     @include text(18px);
+
+    @media (max-width: 768px) {
+        @include text(15px);    
+    }
 }
 
 .text {
     @include text;
+    @media (max-width: 768px) {
+        @include text(14px);    
+    }
 }
 
 .text--small {
     @include text(12px);
+    @media (max-width: 768px) {
+        @include text(11px);    
+    }
+    
 }
 .link-text {
     @include text(18px);
@@ -56,26 +72,112 @@ body {
 
 .tittle--big {
     @include tittle(44px);
+    @media (max-width: 768px) {
+        @include tittle(26px);    
+    }
 }
 
 .tittle{
     @include tittle;
+
+    @media (max-width: 768px) {
+        @include tittle(24px);    
+    }
 }
 
 .tittle--small{
     @include tittle(28px);
+    @media (max-width: 768px) {
+        @include tittle(22px);    
+    }
 }
 
 .button { 
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         height: 60px;
         font-size: 18px;
         color: variaveis.$cortextoSecundaria;
-        background-color: #6121ff;
+        background-color: variaveis.$corDeFundoBtnPrimario;
         text-transform: uppercase;
         border-radius: 4px;
-        margin-top: 2vw;
-        margin-bottom: 8px;
         cursor: pointer;
+        padding: 8px 14px;
+        text-decoration: none;
+        letter-spacing: 1px;
+        border: 1px solid variaveis.$corDeFundoBtnPrimario;
+
+        &:hover {
+            transition: background-color, 5s ease;
+            background-color: lighten(variaveis.$corDeFundoBtnPrimario, 3%);
+        }
+
+        &--secondary {
+            background-color: variaveis.$corDeFundoBtnSecundario;
+            border: 1px solid variaveis.$corDeFundoBtnSecundario;
+
+            &:hover {
+                background-color: lighten(variaveis.$corDeFundoBtnSecundario, 3%);
+            }
+        }
+
+        &--dark {
+            background-color: rgba(variaveis.$corDeFundoBtnDark, 0.8);
+            border: 1px solid variaveis.$cortextoSecundaria;
+
+            &:hover {
+                background-color: variaveis.$cortextoSecundaria;
+                color: variaveis.$corDeFundoBtnDark;
+                transform: all .2 ease;
+            }
+        }
+}
+
+.image-text-section {
+    padding: 5.6vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+    
+    img{
+        width: 100%;
+    }
+    
+    h2 {
+        margin-bottom: 24px;
+    }
+
+    &__text_container {
+        padding: 2vw;
+    }
+    
+    &--image-full-width {
+        display: block;
+        position: relative;
+        img {
+            width: 100%;
+        }
+        &__text_container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: calc(50% - 5.6vw);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @media (max-width: 768px) {
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
 }
